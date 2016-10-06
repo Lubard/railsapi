@@ -35,5 +35,17 @@ class Staff < ActiveRecord::Base
 	  return find(staff_id)
 	end
 
+	def self.nickname
+		pluck("id, nickname")
+	end
+
+	def self.id_nickname_hash(staff_id)
+		Staff.where(id: staff_id).pluck("id,nickname").to_h
+	end
+
+	def self.display_report(staff_id)
+		find(staff_id).display_report
+	end
+
 
 end
