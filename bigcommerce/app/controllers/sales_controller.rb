@@ -154,6 +154,7 @@ class SalesController < ApplicationController
   # How do we come to this page ? - We click on Order ID - then click on any one of the products
   # Displays Orders when selected customer ordered selected product and shows overall product stats
   # (money spent on that product by customer)
+  # We also come here from top products for customer and from top customers for product
   def orders_and_stats_for_product_and_customer
     customer_id = params[:customer_id]
     @customer_name = params[:customer_name]
