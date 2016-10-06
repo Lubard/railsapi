@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'sales#view_sales_dashboard'
+  root 'sales#sales_dashboard'
   #post 'admin/update'
 
   match ':controller(/:action(/:id))', via: [:get, :post]
