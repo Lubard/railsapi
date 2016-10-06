@@ -18,26 +18,26 @@ class SalesController < ApplicationController
   # Also displays total order sales for this week divided by staff
   def sales_dashboard
     # Date selected by user , default is today's date
-    date_given = return_date_given(params)
+    # date_given = return_date_given(params)
 
-    @dates_this_week = this_week(date_given)
-    @dates_last_week = last_week(@dates_this_week[0])
+    # @dates_this_week = this_week(date_given)
+    # @dates_last_week = last_week(@dates_this_week[0])
 
-    sum_function, @checked_bottles, @checked_totals = order_sum_param(params[:sum_param])
-    # returns a hashmap like { date => order_totals }
-    @sum_this_week = sum_orders(@dates_this_week[0], @dates_this_week[-1], :group_by_date_created, sum_function, nil)
-    @sum_last_week = sum_orders(@dates_last_week[0], @dates_last_week[-1], :group_by_date_created, sum_function, nil)
+    # sum_function, @checked_bottles, @checked_totals = order_sum_param(params[:sum_param])
+    # # returns a hashmap like { date => order_totals }
+    # @sum_this_week = sum_orders(@dates_this_week[0], @dates_this_week[-1], :group_by_date_created, sum_function, nil)
+    # @sum_last_week = sum_orders(@dates_last_week[0], @dates_last_week[-1], :group_by_date_created, sum_function, nil)
     
-    @dates_paired_this_week = make_daily_dates_map(@dates_this_week)
-    @dates_paired_last_week = make_daily_dates_map(@dates_last_week)
+    # @dates_paired_this_week = make_daily_dates_map(@dates_this_week)
+    # @dates_paired_last_week = make_daily_dates_map(@dates_last_week)
 
-    # returns a hashmap like { [staff_id, date] => order_totals }
+    # # returns a hashmap like { [staff_id, date] => order_totals }
 
-    staff_id, @staff_nicknames = display_reports_for_sales_dashboard(session[:user_id])
+    # staff_id, @staff_nicknames = display_reports_for_sales_dashboard(session[:user_id])
     
-    @staff_sum_this_week = sum_orders(@dates_this_week[0], @dates_this_week[-1], :group_by_date_created_and_staff_id, sum_function, staff_id)
-    #@staff_nicknames = Staff.active_sales_staff.nickname.to_h
-    @staff_sum_this_week
+    # @staff_sum_this_week = sum_orders(@dates_this_week[0], @dates_this_week[-1], :group_by_date_created_and_staff_id, sum_function, staff_id)
+    # #@staff_nicknames = Staff.active_sales_staff.nickname.to_h
+    # @staff_sum_this_week
   end
 
   def sales_dashboard_detailed
